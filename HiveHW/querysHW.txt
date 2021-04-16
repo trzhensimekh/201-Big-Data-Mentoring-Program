@@ -1,0 +1,71 @@
+HW1
+
+1. select count(flying.UniqueCarrier), flying.UniqueCarrier from flying where flying.Year='2007' group by flying.UniqueCarrier
+2. select count(f.Origin),a.city from flying f inner join airports a on f.Origin=a.iata or f.Dest=a.iata  where a.city='New York' and f.Year='2007' and f.Month='6'  group by a.city;
+3. select count(f.Origin) as cload,a.airport as air from flying f inner join airports a on f.Origin=a.iata or f.Dest=a.iata  where cast(f.Month as int)>5 and cast(f.Month as int)<9 group by a.airport order by cload DESC limit 5;  
+4. SELECT MAX (t1.mycount) max, Description
+     FROM (SELECT COUNT(flying.UniqueCarrier) mycount , carriers.Description
+     FROM flying
+     inner join carriers ON  flying.UniqueCarrier=carriers.Code
+     GROUP BY carriers.Description) t1 group by Description order by max DESC limit 1;
+
+
+HW2
+select f.UniqueCarrier as Carrier, count(f.Cancelled) as Canceled_flights , concat_ws(',',collect_set(a.City)) as Cities
+from flying f
+inner join carriers c ON c.Code=f.UniqueCarrier
+inner join airports a ON a.iata=f.Origin
+where f.Cancelled>0 and f.Year='2007'
+group by f.UniqueCarrier;
+
+
+
+
+//Initial query for tables
+// FLYING TABLE
+create external table flying(
+Year string,Month string,DayofMonth string,DayOfWeek string,DepTime string,CRSDepTime string,ArrTime string,CRSArrTime string,UniqueCarrier string,FlightNum string,TailNum string,ActualElapsedTime string,CRSElapsedTime string,AirTime string,ArrDelay string,DepDelay string,Origin string,Dest string,Distance string,TaxiIn string,TaxiOut string,Cancelled string,CancellationCode string,Diverted string,CarrierDelay string,WeatherDelay string,NASDelay string,SecurityDelay string,LateAircraftDelay string)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+ 'separatorChar' = ',',
+ 'quoteChar' = '\"')
+stored as textfile
+location '/user/hive/warehouse/flying'
+tblproperties ('skip.header.line.count'='1');
+
+
+// AIRPORTS TABLE
+create external table airports(
+iata string,airport string,city string,state string,country string,lat string,longiata string)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+ 'separatorChar' = ',',
+ 'quoteChar' = '\"')
+stored as textfile
+location '/user/hive/warehouse/airports'
+tblproperties ('skip.header.line.count'='1');
+
+// AIRPORTS TABLE
+create external table carriers(
+Code string,Description string)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+ 'separatorChar' = ',',
+ 'quoteChar' = '\"')
+stored as textfile
+location '/user/hive/warehouse/carriers'
+tblproperties ('skip.header.line.count'='1');
+
+
+// FLYING Light TABLE
+create external table flying(
+Year string,Month string,DayofMonth string,DayOfWeek string,DepTime string,CRSDepTime string,ArrTime string,CRSArrTime string,UniqueCarrier string,FlightNum string,TailNum string,ActualElapsedTime string,CRSElapsedTime string,AirTime string,ArrDelay string,DepDelay string,Origin string,Dest string,Distance string,TaxiIn string,TaxiOut string,Cancelled string,CancellationCode string,Diverted string,CarrierDelay string,WeatherDelay string,NASDelay string,SecurityDelay string,LateAircraftDelay string)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+ 'separatorChar' = ',',
+ 'quoteChar' = '\"')
+stored as textfile
+location '/user/hive/warehouse/flyingnew'
+tblproperties ('skip.header.line.count'='1');
+
+
