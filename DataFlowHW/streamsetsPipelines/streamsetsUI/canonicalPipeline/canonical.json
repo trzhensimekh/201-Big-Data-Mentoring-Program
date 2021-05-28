@@ -1,0 +1,1558 @@
+{
+  "pipelineConfig" : {
+    "schemaVersion" : 6,
+    "version" : 22,
+    "pipelineId" : "canonicalce07a0c4-1ac6-4cf9-84f7-5e17a9f50fd4",
+    "title" : "canonical",
+    "description" : "",
+    "uuid" : "17b2f815-368f-4121-a3c5-130df8d66c5c",
+    "configuration" : [ {
+      "name" : "executionMode",
+      "value" : "STANDALONE"
+    }, {
+      "name" : "edgeHttpUrl",
+      "value" : "http://localhost:18633"
+    }, {
+      "name" : "deliveryGuarantee",
+      "value" : "AT_LEAST_ONCE"
+    }, {
+      "name" : "testOriginStage",
+      "value" : "streamsets-datacollector-dev-lib::com_streamsets_pipeline_stage_devtest_rawdata_RawDataDSource::3"
+    }, {
+      "name" : "startEventStage",
+      "value" : "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget::1"
+    }, {
+      "name" : "stopEventStage",
+      "value" : "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget::1"
+    }, {
+      "name" : "shouldRetry",
+      "value" : true
+    }, {
+      "name" : "triggerInterval",
+      "value" : 2000
+    }, {
+      "name" : "retryAttempts",
+      "value" : -1
+    }, {
+      "name" : "ludicrousMode",
+      "value" : false
+    }, {
+      "name" : "ludicrousModeInputCount",
+      "value" : false
+    }, {
+      "name" : "advancedErrorHandling",
+      "value" : false
+    }, {
+      "name" : "notifyOnStates",
+      "value" : [ "RUN_ERROR", "STOPPED", "FINISHED" ]
+    }, {
+      "name" : "emailIDs",
+      "value" : [ ]
+    }, {
+      "name" : "constants",
+      "value" : [ ]
+    }, {
+      "name" : "badRecordsHandling",
+      "value" : "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget::1"
+    }, {
+      "name" : "errorRecordPolicy",
+      "value" : "ORIGINAL_RECORD"
+    }, {
+      "name" : "statsAggregatorStage",
+      "value" : "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_devnull_StatsDpmDirectlyDTarget::1"
+    }, {
+      "name" : "workerCount",
+      "value" : 0
+    }, {
+      "name" : "clusterSlaveMemory",
+      "value" : 2048
+    }, {
+      "name" : "clusterSlaveJavaOpts",
+      "value" : "-XX:+UseConcMarkSweepGC -XX:+UseParNewGC -Dlog4j.debug"
+    }, {
+      "name" : "clusterLauncherEnv",
+      "value" : [ ]
+    }, {
+      "name" : "mesosDispatcherURL",
+      "value" : null
+    }, {
+      "name" : "logLevel",
+      "value" : "INFO"
+    }, {
+      "name" : "hdfsS3ConfDir",
+      "value" : null
+    }, {
+      "name" : "rateLimit",
+      "value" : 0
+    }, {
+      "name" : "maxRunners",
+      "value" : 0
+    }, {
+      "name" : "runnerIdleTIme",
+      "value" : 60
+    }, {
+      "name" : "shouldCreateFailureSnapshot",
+      "value" : true
+    }, {
+      "name" : "webhookConfigs",
+      "value" : [ ]
+    }, {
+      "name" : "sparkConfigs",
+      "value" : [ ]
+    }, {
+      "name" : "preprocessScript",
+      "value" : "/*\nThe following script define a method\nthat increments an integer by 1 \nand registers it as a UDF with \nthe SparkSession, which can be accessed\nusing the variable named \"spark\":\ndef inc(i: Integer): Integer = {\n  i + 1\n}\nspark.udf.register (\"inc\", inc _)\n\n*/"
+    }, {
+      "name" : "clusterConfig.clusterType",
+      "value" : "LOCAL"
+    }, {
+      "name" : "clusterConfig.sparkMasterUrl",
+      "value" : "local[*]"
+    }, {
+      "name" : "clusterConfig.deployMode",
+      "value" : "CLIENT"
+    }, {
+      "name" : "clusterConfig.hadoopUserName",
+      "value" : null
+    }, {
+      "name" : "clusterConfig.sparkAppName",
+      "value" : "${pipeline:title()}"
+    }, {
+      "name" : "clusterConfig.stagingDir",
+      "value" : "/streamsets"
+    }, {
+      "name" : "clusterConfig.useYarnKerberosKeytab",
+      "value" : false
+    }, {
+      "name" : "clusterConfig.yarnKerberosKeytabSource",
+      "value" : "PROPERTIES_FILE"
+    }, {
+      "name" : "clusterConfig.yarnKerberosKeytab",
+      "value" : null
+    }, {
+      "name" : "clusterConfig.yarnKerberosKeytabBase64Bytes",
+      "value" : null
+    }, {
+      "name" : "clusterConfig.yarnKerberosPrincipal",
+      "value" : "name@DOMAIN"
+    }, {
+      "name" : "clusterConfig.callbackUrl",
+      "value" : null
+    }, {
+      "name" : "databricksConfig.baseUrl",
+      "value" : null
+    }, {
+      "name" : "databricksConfig.credentialType",
+      "value" : "TOKEN"
+    }, {
+      "name" : "databricksConfig.username",
+      "value" : null
+    }, {
+      "name" : "databricksConfig.password",
+      "value" : null
+    }, {
+      "name" : "databricksConfig.token",
+      "value" : null
+    }, {
+      "name" : "databricksConfig.provisionNewCluster",
+      "value" : true
+    }, {
+      "name" : "databricksConfig.clusterId",
+      "value" : null
+    }, {
+      "name" : "databricksConfig.clusterConfig",
+      "value" : "{\n    \"num_workers\": 8,\n    \"spark_version\": \"5.3.x-scala2.11\",\n    \"node_type_id\": \"i3.xlarge\"\n}"
+    }, {
+      "name" : "databricksConfig.terminateCluster",
+      "value" : false
+    }, {
+      "name" : "livyConfig.baseUrl",
+      "value" : "https://localhost:30443/gateway/default/livy/v1/"
+    }, {
+      "name" : "livyConfig.username",
+      "value" : null
+    }, {
+      "name" : "livyConfig.password",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnectionSelection",
+      "value" : "MANUAL"
+    }, {
+      "name" : "sdcEmrConnection.awsConfig.credentialMode",
+      "value" : "WITH_CREDENTIALS"
+    }, {
+      "name" : "sdcEmrConnection.awsConfig.awsAccessKeyId",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.awsConfig.awsSecretAccessKey",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.awsConfig.roleARN",
+      "value" : ""
+    }, {
+      "name" : "sdcEmrConnection.awsConfig.roleSessionName",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.awsConfig.sessionDuration",
+      "value" : 3600
+    }, {
+      "name" : "sdcEmrConnection.awsConfig.setSessionTags",
+      "value" : true
+    }, {
+      "name" : "sdcEmrConnection.region",
+      "value" : "US_WEST_2"
+    }, {
+      "name" : "sdcEmrConnection.customRegion",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.s3StagingUri",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.provisionNewCluster",
+      "value" : false
+    }, {
+      "name" : "sdcEmrConnection.clusterId",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.emrVersion",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.clusterPrefix",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.terminateCluster",
+      "value" : true
+    }, {
+      "name" : "sdcEmrConnection.loggingEnabled",
+      "value" : true
+    }, {
+      "name" : "sdcEmrConnection.s3LogUri",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.serviceRole",
+      "value" : "EMR_DefaultRole"
+    }, {
+      "name" : "sdcEmrConnection.jobFlowRole",
+      "value" : "EMR_EC2_DefaultRole"
+    }, {
+      "name" : "sdcEmrConnection.visibleToAllUsers",
+      "value" : true
+    }, {
+      "name" : "sdcEmrConnection.ec2SubnetId",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.masterSecurityGroup",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.slaveSecurityGroup",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.serviceAccessSecurityGroup",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.instanceCount",
+      "value" : 2
+    }, {
+      "name" : "sdcEmrConnection.stepConcurrency",
+      "value" : 1
+    }, {
+      "name" : "sdcEmrConnection.masterInstanceType",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.masterInstanceTypeCustom",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.slaveInstanceType",
+      "value" : null
+    }, {
+      "name" : "sdcEmrConnection.slaveInstanceTypeCustom",
+      "value" : null
+    }, {
+      "name" : "enableEMRDebugging",
+      "value" : true
+    }, {
+      "name" : "transformerEmrConnectionSelection",
+      "value" : "MANUAL"
+    }, {
+      "name" : "transformerEmrConnection.awsConfig.credentialMode",
+      "value" : "WITH_CREDENTIALS"
+    }, {
+      "name" : "transformerEmrConnection.awsConfig.awsAccessKeyId",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.awsConfig.awsSecretAccessKey",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.awsConfig.roleARN",
+      "value" : ""
+    }, {
+      "name" : "transformerEmrConnection.awsConfig.roleSessionName",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.awsConfig.sessionDuration",
+      "value" : 3600
+    }, {
+      "name" : "transformerEmrConnection.awsConfig.setSessionTags",
+      "value" : true
+    }, {
+      "name" : "transformerEmrConnection.region",
+      "value" : "US_WEST_2"
+    }, {
+      "name" : "transformerEmrConnection.customRegion",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.s3StagingUri",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.provisionNewCluster",
+      "value" : false
+    }, {
+      "name" : "transformerEmrConnection.clusterId",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.emrVersion",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.clusterPrefix",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.terminateCluster",
+      "value" : true
+    }, {
+      "name" : "transformerEmrConnection.loggingEnabled",
+      "value" : true
+    }, {
+      "name" : "transformerEmrConnection.s3LogUri",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.serviceRole",
+      "value" : "EMR_DefaultRole"
+    }, {
+      "name" : "transformerEmrConnection.jobFlowRole",
+      "value" : "EMR_EC2_DefaultRole"
+    }, {
+      "name" : "transformerEmrConnection.visibleToAllUsers",
+      "value" : true
+    }, {
+      "name" : "transformerEmrConnection.ec2SubnetId",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.masterSecurityGroup",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.slaveSecurityGroup",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.serviceAccessSecurityGroup",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.instanceCount",
+      "value" : 2
+    }, {
+      "name" : "transformerEmrConnection.stepConcurrency",
+      "value" : 1
+    }, {
+      "name" : "transformerEmrConnection.masterInstanceType",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.masterInstanceTypeCustom",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.slaveInstanceType",
+      "value" : null
+    }, {
+      "name" : "transformerEmrConnection.slaveInstanceTypeCustom",
+      "value" : null
+    }, {
+      "name" : "transformerEMRConfig.encryption",
+      "value" : "NONE"
+    }, {
+      "name" : "transformerEMRConfig.kmsKeyId",
+      "value" : null
+    }, {
+      "name" : "googleCloudCredentialsConfig.projectId",
+      "value" : null
+    }, {
+      "name" : "googleCloudCredentialsConfig.credentialsProvider",
+      "value" : "DEFAULT_PROVIDER"
+    }, {
+      "name" : "googleCloudCredentialsConfig.path",
+      "value" : null
+    }, {
+      "name" : "googleCloudCredentialsConfig.credentialsFileContent",
+      "value" : null
+    }, {
+      "name" : "googleCloudConfig.region",
+      "value" : null
+    }, {
+      "name" : "googleCloudConfig.customRegion",
+      "value" : null
+    }, {
+      "name" : "googleCloudConfig.gcsStagingUri",
+      "value" : null
+    }, {
+      "name" : "googleCloudConfig.create",
+      "value" : false
+    }, {
+      "name" : "googleCloudConfig.clusterPrefix",
+      "value" : null
+    }, {
+      "name" : "googleCloudConfig.version",
+      "value" : "1.4-ubuntu18"
+    }, {
+      "name" : "googleCloudConfig.masterType",
+      "value" : null
+    }, {
+      "name" : "googleCloudConfig.workerType",
+      "value" : null
+    }, {
+      "name" : "googleCloudConfig.networkType",
+      "value" : null
+    }, {
+      "name" : "googleCloudConfig.network",
+      "value" : null
+    }, {
+      "name" : "googleCloudConfig.subnet",
+      "value" : null
+    }, {
+      "name" : "googleCloudConfig.tags",
+      "value" : [ ]
+    }, {
+      "name" : "googleCloudConfig.workerCount",
+      "value" : 2
+    }, {
+      "name" : "googleCloudConfig.clusterName",
+      "value" : null
+    }, {
+      "name" : "googleCloudConfig.terminate",
+      "value" : null
+    } ],
+    "uiInfo" : {
+      "displayMode" : "BASIC",
+      "previewConfig" : {
+        "previewSource" : "CONFIGURED_SOURCE",
+        "batchSize" : 10,
+        "timeout" : 30000,
+        "writeToDestinations" : false,
+        "executeLifecycleEvents" : false,
+        "showHeader" : false,
+        "showFieldType" : true,
+        "rememberMe" : false
+      }
+    },
+    "fragments" : [ ],
+    "stages" : [ {
+      "instanceName" : "KafkaConsumer_01",
+      "library" : "streamsets-datacollector-apache-kafka_2_0-lib",
+      "stageName" : "com_streamsets_pipeline_stage_origin_kafka_KafkaDSource",
+      "stageVersion" : "12",
+      "configuration" : [ {
+        "name" : "kafkaConfigBean.dataFormatConfig.filePatternInArchive",
+        "value" : "*"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.charset",
+        "value" : "UTF-8"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.removeCtrlChars",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.textMaxLineLen",
+        "value" : 1024
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.useCustomDelimiter",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.customDelimiter",
+        "value" : "\\r\\n"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.includeCustomDelimiterInTheText",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.jsonContent",
+        "value" : "MULTIPLE_OBJECTS"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.jsonMaxObjectLen",
+        "value" : 10000
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.csvFileFormat",
+        "value" : "CSV"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.csvHeader",
+        "value" : "NO_HEADER"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.csvAllowExtraColumns",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.csvExtraColumnPrefix",
+        "value" : "_extra_"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.csvMaxObjectLen",
+        "value" : 1024
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.csvCustomDelimiter",
+        "value" : "|"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.multiCharacterFieldDelimiter",
+        "value" : "||"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.multiCharacterLineDelimiter",
+        "value" : "${str:unescapeJava('\\\\n')}"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.csvCustomEscape",
+        "value" : "\\"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.csvCustomQuote",
+        "value" : "\""
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.csvEnableComments",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.csvCommentMarker",
+        "value" : "#"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.csvIgnoreEmptyLines",
+        "value" : true
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.csvRecordType",
+        "value" : "LIST_MAP"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.csvSkipStartLines",
+        "value" : 0
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.parseNull",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.nullConstant",
+        "value" : "\\\\N"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.xmlRecordElement",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.preserveRootElement",
+        "value" : true
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.includeFieldXpathAttributes",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.xPathNamespaceContext",
+        "value" : [ ]
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.outputFieldAttributes",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.xmlMaxObjectLen",
+        "value" : 4096
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.logMode",
+        "value" : "COMMON_LOG_FORMAT"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.logMaxObjectLen",
+        "value" : 1024
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.retainOriginalLine",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.customLogFormat",
+        "value" : "%h %l %u %t \"%r\" %>s %b"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.regex",
+        "value" : "^(\\S+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(\\S+) (\\S+) (\\S+)\" (\\d{3}) (\\d+)"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.fieldPathsToGroupName",
+        "value" : [ {
+          "fieldPath" : "/",
+          "group" : 1
+        } ]
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.grokPatternDefinition",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.grokPattern",
+        "value" : "%{COMMONAPACHELOG}"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.onParseError",
+        "value" : "ERROR"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.maxStackTraceLines",
+        "value" : 50
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.enableLog4jCustomLogFormat",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.log4jCustomLogFormat",
+        "value" : "%r [%t] %-5p %c %x - %m%n"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.avroSchemaSource",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.avroSchema",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.schemaRegistryUrls",
+        "value" : [ "" ]
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.basicAuth",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.schemaLookupMode",
+        "value" : "SUBJECT"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.subject",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.schemaId",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.avroSkipUnionIndex",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.protoDescriptorFile",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.messageType",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.isDelimited",
+        "value" : true
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.binaryMaxObjectLen",
+        "value" : 1024
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.datagramMode",
+        "value" : "SYSLOG"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.typesDbPath",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.convertTime",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.excludeInterval",
+        "value" : true
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.authFilePath",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.netflowOutputValuesMode",
+        "value" : "RAW_AND_INTERPRETED"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.maxTemplateCacheSize",
+        "value" : -1
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.templateCacheTimeoutMs",
+        "value" : -1
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.netflowOutputValuesModeDatagram",
+        "value" : "RAW_AND_INTERPRETED"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.maxTemplateCacheSizeDatagram",
+        "value" : -1
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.templateCacheTimeoutMsDatagram",
+        "value" : -1
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.wholeFileMaxObjectLen",
+        "value" : 8192
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.rateLimit",
+        "value" : "-1"
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.verifyChecksum",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.excelHeader",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.excelSkipCellsWithNoHeader",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.excelReadAllSheets",
+        "value" : true
+      }, {
+        "name" : "kafkaConfigBean.dataFormatConfig.excelSheetNames",
+        "value" : [ "" ]
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connectionSelection",
+        "value" : "MANUAL"
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connection.metadataBrokerList",
+        "value" : "kafka-broker:9092"
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connection.securityConfig.securityOption",
+        "value" : "PLAINTEXT"
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connection.securityConfig.kerberosServiceName",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connection.securityConfig.provideKeytab",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connection.securityConfig.userKeytab",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connection.securityConfig.userPrincipal",
+        "value" : "user/host@REALM"
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connection.securityConfig.truststoreType",
+        "value" : "JKS"
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connection.securityConfig.truststoreFile",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connection.securityConfig.truststorePassword",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connection.securityConfig.keystoreType",
+        "value" : "JKS"
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connection.securityConfig.keystoreFile",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connection.securityConfig.keystorePassword",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connection.securityConfig.keyPassword",
+        "value" : null
+      }, {
+        "name" : "kafkaConfigBean.connectionConfig.connection.securityConfig.enabledProtocols",
+        "value" : "TLSv1.2"
+      }, {
+        "name" : "kafkaConfigBean.dataFormat",
+        "value" : "JSON"
+      }, {
+        "name" : "kafkaConfigBean.zookeeperConnect",
+        "value" : "zookeeper:2181"
+      }, {
+        "name" : "kafkaConfigBean.consumerGroup",
+        "value" : "streamsetsDataCollectorCanonical"
+      }, {
+        "name" : "kafkaConfigBean.topic",
+        "value" : "debulkTopic"
+      }, {
+        "name" : "kafkaConfigBean.produceSingleRecordPerMessage",
+        "value" : false
+      }, {
+        "name" : "kafkaConfigBean.maxBatchSize",
+        "value" : 1000
+      }, {
+        "name" : "kafkaConfigBean.maxWaitTime",
+        "value" : 2000
+      }, {
+        "name" : "kafkaConfigBean.maxRatePerPartition",
+        "value" : 1000
+      }, {
+        "name" : "kafkaConfigBean.keyDeserializer",
+        "value" : "STRING"
+      }, {
+        "name" : "kafkaConfigBean.keyCaptureMode",
+        "value" : "NONE"
+      }, {
+        "name" : "kafkaConfigBean.keyCaptureAttribute",
+        "value" : "kafkaMessageKey"
+      }, {
+        "name" : "kafkaConfigBean.keyCaptureField",
+        "value" : "/kafkaMessageKey"
+      }, {
+        "name" : "kafkaConfigBean.valueDeserializer",
+        "value" : "DEFAULT"
+      }, {
+        "name" : "kafkaConfigBean.kafkaAutoOffsetReset",
+        "value" : "EARLIEST"
+      }, {
+        "name" : "kafkaConfigBean.timestampToSearchOffsets",
+        "value" : 0
+      }, {
+        "name" : "kafkaConfigBean.kafkaConsumerConfigs",
+        "value" : [ ]
+      }, {
+        "name" : "kafkaConfigBean.timestampsEnabled",
+        "value" : false
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      } ],
+      "uiInfo" : {
+        "yPos" : 50,
+        "stageType" : "SOURCE",
+        "rawSource" : {
+          "configuration" : [ {
+            "name" : "brokerHost",
+            "value" : "localhost"
+          }, {
+            "name" : "brokerPort",
+            "value" : 9092
+          }, {
+            "name" : "topic",
+            "value" : "myTopic"
+          }, {
+            "name" : "partition",
+            "value" : 0
+          }, {
+            "name" : "maxWaitTime",
+            "value" : 1000
+          } ]
+        },
+        "icon" : "kafka.png",
+        "description" : "",
+        "label" : "Kafka Producer Debulk Topic",
+        "xPos" : 60,
+        "displayMode" : "ADVANCED"
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ "KafkaConsumer_01OutputLane16079686233770" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "UUIDGeneratorProcessor_01",
+      "library" : "nlm-stream-sets-processors",
+      "stageName" : "org_example_stage_processor_mongo_uuid_generator_SampleDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "config",
+        "value" : "default"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "yPos" : 50,
+        "stageType" : "PROCESSOR",
+        "icon" : "default.png",
+        "description" : "",
+        "label" : "UUID Generator Processor",
+        "xPos" : 285,
+        "displayMode" : "BASIC"
+      },
+      "inputLanes" : [ "KafkaConsumer_01OutputLane16079686233770" ],
+      "outputLanes" : [ "UUIDGeneratorProcessor_01OutputLane16083035659190" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "JSONGenerator_01",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_jsongenerator_JsonGeneratorDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "fieldPathToSerialize",
+        "value" : "/article"
+      }, {
+        "name" : "outputFieldPath",
+        "value" : "/articleJson"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "yPos" : 49,
+        "stageType" : "PROCESSOR",
+        "icon" : "json.png",
+        "description" : "",
+        "label" : "JSON Generator 1",
+        "xPos" : 500,
+        "displayMode" : "BASIC"
+      },
+      "inputLanes" : [ "UUIDGeneratorProcessor_01OutputLane16083035659190" ],
+      "outputLanes" : [ "JSONGenerator_01OutputLane16082983300550" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "MongoDBWriter_01",
+      "library" : "nlm-stream-sets-processors",
+      "stageName" : "org_example_stage_processor_mongo_writer_SampleDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "config",
+        "value" : "default"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "yPos" : 51,
+        "stageType" : "PROCESSOR",
+        "icon" : "default.png",
+        "description" : "",
+        "label" : "MongoDB Writer",
+        "xPos" : 732,
+        "displayMode" : "ADVANCED"
+      },
+      "inputLanes" : [ "JSONGenerator_01OutputLane16082983300550" ],
+      "outputLanes" : [ "MongoDBWriter_01OutputLane16084645648410" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "KafkaProducer_01",
+      "library" : "streamsets-datacollector-apache-kafka_2_0-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_kafka_KafkaDTarget",
+      "stageVersion" : "8",
+      "configuration" : [ {
+        "name" : "conf.dataFormat",
+        "value" : "JSON"
+      }, {
+        "name" : "conf.messageKeyFormat",
+        "value" : "STRING"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.charset",
+        "value" : "UTF-8"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.csvFileFormat",
+        "value" : "CSV"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.csvHeader",
+        "value" : "NO_HEADER"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.csvReplaceNewLines",
+        "value" : true
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.csvReplaceNewLinesString",
+        "value" : " "
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.csvCustomDelimiter",
+        "value" : "|"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.csvCustomEscape",
+        "value" : "\\"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.csvCustomQuote",
+        "value" : "\""
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.csvQuoteMode",
+        "value" : "MINIMAL"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.jsonMode",
+        "value" : "MULTIPLE_OBJECTS"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.textFieldPath",
+        "value" : "/text"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.textRecordSeparator",
+        "value" : "\\n"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.textFieldMissingAction",
+        "value" : "ERROR"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.textEmptyLineIfNull",
+        "value" : false
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.avroSchemaSource",
+        "value" : null
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.avroSchema",
+        "value" : null
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.registerSchema",
+        "value" : false
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.schemaRegistryUrlsForRegistration",
+        "value" : [ "" ]
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.schemaRegistryUrls",
+        "value" : [ "" ]
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.basicAuthUserInfo",
+        "value" : null
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.schemaLookupMode",
+        "value" : "SUBJECT"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.subject",
+        "value" : null
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.subjectToRegister",
+        "value" : null
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.basicAuthUserInfoForRegistration",
+        "value" : null
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.schemaId",
+        "value" : null
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.includeSchema",
+        "value" : true
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.avroCompression",
+        "value" : "NULL"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.binaryFieldPath",
+        "value" : "/"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.protoDescriptorFile",
+        "value" : null
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.messageType",
+        "value" : null
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.fileNameEL",
+        "value" : null
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.wholeFileExistsAction",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.includeChecksumInTheEvents",
+        "value" : false
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.checksumAlgorithm",
+        "value" : "MD5"
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.xmlPrettyPrint",
+        "value" : true
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.xmlValidateSchema",
+        "value" : false
+      }, {
+        "name" : "conf.dataGeneratorFormatConfig.xmlSchema",
+        "value" : null
+      }, {
+        "name" : "conf.connectionConfig.connectionSelection",
+        "value" : "MANUAL"
+      }, {
+        "name" : "conf.connectionConfig.connection.metadataBrokerList",
+        "value" : "kafka-broker:9092"
+      }, {
+        "name" : "conf.connectionConfig.connection.securityConfig.securityOption",
+        "value" : "PLAINTEXT"
+      }, {
+        "name" : "conf.connectionConfig.connection.securityConfig.kerberosServiceName",
+        "value" : null
+      }, {
+        "name" : "conf.connectionConfig.connection.securityConfig.provideKeytab",
+        "value" : false
+      }, {
+        "name" : "conf.connectionConfig.connection.securityConfig.userKeytab",
+        "value" : null
+      }, {
+        "name" : "conf.connectionConfig.connection.securityConfig.userPrincipal",
+        "value" : "user/host@REALM"
+      }, {
+        "name" : "conf.connectionConfig.connection.securityConfig.truststoreType",
+        "value" : "JKS"
+      }, {
+        "name" : "conf.connectionConfig.connection.securityConfig.truststoreFile",
+        "value" : null
+      }, {
+        "name" : "conf.connectionConfig.connection.securityConfig.truststorePassword",
+        "value" : null
+      }, {
+        "name" : "conf.connectionConfig.connection.securityConfig.keystoreType",
+        "value" : "JKS"
+      }, {
+        "name" : "conf.connectionConfig.connection.securityConfig.keystoreFile",
+        "value" : null
+      }, {
+        "name" : "conf.connectionConfig.connection.securityConfig.keystorePassword",
+        "value" : null
+      }, {
+        "name" : "conf.connectionConfig.connection.securityConfig.keyPassword",
+        "value" : null
+      }, {
+        "name" : "conf.connectionConfig.connection.securityConfig.enabledProtocols",
+        "value" : "TLSv1.2"
+      }, {
+        "name" : "conf.runtimeTopicResolution",
+        "value" : false
+      }, {
+        "name" : "conf.topicExpression",
+        "value" : "${record:value('/topic')}"
+      }, {
+        "name" : "conf.topicWhiteList",
+        "value" : "*"
+      }, {
+        "name" : "conf.topic",
+        "value" : "canonicalTopic"
+      }, {
+        "name" : "conf.partitionStrategy",
+        "value" : "ROUND_ROBIN"
+      }, {
+        "name" : "conf.partition",
+        "value" : "${0}"
+      }, {
+        "name" : "conf.singleMessagePerBatch",
+        "value" : false
+      }, {
+        "name" : "conf.keySerializer",
+        "value" : "STRING"
+      }, {
+        "name" : "conf.valueSerializer",
+        "value" : "DEFAULT"
+      }, {
+        "name" : "conf.kafkaProducerConfigs",
+        "value" : [ ]
+      }, {
+        "name" : "conf.avroMessageKey",
+        "value" : "${avro:decode(record:attribute('avroKeySchema'),base64:decodeBytes(record:attribute('kafkaMessageKey')))}"
+      }, {
+        "name" : "conf.stringMessageKey",
+        "value" : "${record:attribute('kafkaMessageKey')}"
+      }, {
+        "name" : "responseConf.sendResponseToOrigin",
+        "value" : false
+      }, {
+        "name" : "responseConf.responseType",
+        "value" : "SUCCESS_RECORDS"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "yPos" : 54,
+        "stageType" : "TARGET",
+        "icon" : "kafka.png",
+        "description" : "",
+        "label" : "Kafka Producer Enrichment Topic",
+        "xPos" : 955,
+        "displayMode" : "BASIC"
+      },
+      "inputLanes" : [ "MongoDBWriter_01OutputLane16084645648410" ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    } ],
+    "errorStage" : {
+      "instanceName" : "errorStageStageInstance",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget",
+      "stageVersion" : "1",
+      "configuration" : [ ],
+      "uiInfo" : {
+        "stageType" : "TARGET",
+        "label" : "Error -Discard"
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    },
+    "info" : {
+      "pipelineId" : "canonicalce07a0c4-1ac6-4cf9-84f7-5e17a9f50fd4",
+      "title" : "canonical",
+      "description" : "",
+      "created" : 1607967762591,
+      "lastModified" : 1608571272553,
+      "creator" : "kanstantsin_hulevich@epam.com",
+      "lastModifier" : "kanstantsin_hulevich@epam.com",
+      "lastRev" : "0",
+      "uuid" : "17b2f815-368f-4121-a3c5-130df8d66c5c",
+      "valid" : true,
+      "metadata" : {
+        "labels" : [ ]
+      },
+      "name" : "canonicalce07a0c4-1ac6-4cf9-84f7-5e17a9f50fd4",
+      "sdcVersion" : "3.19.1",
+      "sdcId" : "c858687f-3df9-11eb-9570-25178be66915"
+    },
+    "metadata" : {
+      "labels" : [ ]
+    },
+    "statsAggregatorStage" : {
+      "instanceName" : "statsAggregatorStageInstance",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_devnull_StatsDpmDirectlyDTarget",
+      "stageVersion" : "1",
+      "configuration" : [ ],
+      "uiInfo" : {
+        "stageType" : "TARGET",
+        "label" : "Stats Aggregator -Write Directly to Control Hub - statistics are not aggregated across Data Collectors"
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    },
+    "startEventStages" : [ {
+      "instanceName" : "Discard_StartEventStage",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget",
+      "stageVersion" : "1",
+      "configuration" : [ ],
+      "uiInfo" : {
+        "yPos" : 50,
+        "stageType" : "TARGET",
+        "icon" : "",
+        "description" : "",
+        "label" : "Start Event - Discard",
+        "xPos" : 280
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    } ],
+    "stopEventStages" : [ {
+      "instanceName" : "Discard_StopEventStage",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget",
+      "stageVersion" : "1",
+      "configuration" : [ ],
+      "uiInfo" : {
+        "yPos" : 50,
+        "stageType" : "TARGET",
+        "icon" : "",
+        "description" : "",
+        "label" : "Stop Event - Discard",
+        "xPos" : 280
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    } ],
+    "testOriginStage" : {
+      "instanceName" : "com_streamsets_pipeline_stage_devtest_rawdata_RawDataDSource_TestOriginStage",
+      "library" : "streamsets-datacollector-dev-lib",
+      "stageName" : "com_streamsets_pipeline_stage_devtest_rawdata_RawDataDSource",
+      "stageVersion" : "3",
+      "configuration" : [ {
+        "name" : "rawData",
+        "value" : "{\n  \"f1\": \"abc\",\n  \"f2\": \"xyz\",\n  \"f3\": \"lmn\"\n}"
+      }, {
+        "name" : "stopAfterFirstBatch",
+        "value" : false
+      }, {
+        "name" : "eventData",
+        "value" : null
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      } ],
+      "uiInfo" : {
+        "stageType" : "SOURCE",
+        "label" : "Test Origin - Dev Raw Data Source"
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ "com_streamsets_pipeline_stage_devtest_rawdata_RawDataDSource_TestOriginStageOutputLane1" ],
+      "eventLanes" : [ ],
+      "services" : [ {
+        "service" : "com.streamsets.pipeline.api.service.dataformats.DataFormatParserService",
+        "serviceVersion" : 2,
+        "configuration" : [ {
+          "name" : "displayFormats",
+          "value" : "DELIMITED,JSON,LOG,SDC_JSON,TEXT,XML"
+        }, {
+          "name" : "dataFormat",
+          "value" : "JSON"
+        }, {
+          "name" : "dataFormatConfig.compression",
+          "value" : "NONE"
+        }, {
+          "name" : "dataFormatConfig.filePatternInArchive",
+          "value" : "*"
+        }, {
+          "name" : "dataFormatConfig.charset",
+          "value" : "UTF-8"
+        }, {
+          "name" : "dataFormatConfig.removeCtrlChars",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.textMaxLineLen",
+          "value" : 1024
+        }, {
+          "name" : "dataFormatConfig.useCustomDelimiter",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.customDelimiter",
+          "value" : "\\r\\n"
+        }, {
+          "name" : "dataFormatConfig.includeCustomDelimiterInTheText",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.jsonContent",
+          "value" : "MULTIPLE_OBJECTS"
+        }, {
+          "name" : "dataFormatConfig.jsonMaxObjectLen",
+          "value" : 4096
+        }, {
+          "name" : "dataFormatConfig.csvFileFormat",
+          "value" : "CSV"
+        }, {
+          "name" : "dataFormatConfig.csvHeader",
+          "value" : "NO_HEADER"
+        }, {
+          "name" : "dataFormatConfig.csvAllowExtraColumns",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.csvExtraColumnPrefix",
+          "value" : "_extra_"
+        }, {
+          "name" : "dataFormatConfig.csvMaxObjectLen",
+          "value" : 1024
+        }, {
+          "name" : "dataFormatConfig.csvCustomDelimiter",
+          "value" : "|"
+        }, {
+          "name" : "dataFormatConfig.multiCharacterFieldDelimiter",
+          "value" : "||"
+        }, {
+          "name" : "dataFormatConfig.multiCharacterLineDelimiter",
+          "value" : "${str:unescapeJava('\\\\n')}"
+        }, {
+          "name" : "dataFormatConfig.csvCustomEscape",
+          "value" : "\\"
+        }, {
+          "name" : "dataFormatConfig.csvCustomQuote",
+          "value" : "\""
+        }, {
+          "name" : "dataFormatConfig.csvEnableComments",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.csvCommentMarker",
+          "value" : "#"
+        }, {
+          "name" : "dataFormatConfig.csvIgnoreEmptyLines",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.csvRecordType",
+          "value" : "LIST_MAP"
+        }, {
+          "name" : "dataFormatConfig.csvSkipStartLines",
+          "value" : 0
+        }, {
+          "name" : "dataFormatConfig.parseNull",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.nullConstant",
+          "value" : "\\\\N"
+        }, {
+          "name" : "dataFormatConfig.xmlRecordElement",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.preserveRootElement",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.includeFieldXpathAttributes",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.xPathNamespaceContext",
+          "value" : [ ]
+        }, {
+          "name" : "dataFormatConfig.outputFieldAttributes",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.xmlMaxObjectLen",
+          "value" : 4096
+        }, {
+          "name" : "dataFormatConfig.logMode",
+          "value" : "COMMON_LOG_FORMAT"
+        }, {
+          "name" : "dataFormatConfig.logMaxObjectLen",
+          "value" : 1024
+        }, {
+          "name" : "dataFormatConfig.retainOriginalLine",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.customLogFormat",
+          "value" : "%h %l %u %t \"%r\" %>s %b"
+        }, {
+          "name" : "dataFormatConfig.regex",
+          "value" : "^(\\S+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(\\S+) (\\S+) (\\S+)\" (\\d{3}) (\\d+)"
+        }, {
+          "name" : "dataFormatConfig.fieldPathsToGroupName",
+          "value" : [ {
+            "fieldPath" : "/",
+            "group" : 1
+          } ]
+        }, {
+          "name" : "dataFormatConfig.grokPatternDefinition",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.grokPattern",
+          "value" : "%{COMMONAPACHELOG}"
+        }, {
+          "name" : "dataFormatConfig.onParseError",
+          "value" : "ERROR"
+        }, {
+          "name" : "dataFormatConfig.maxStackTraceLines",
+          "value" : 50
+        }, {
+          "name" : "dataFormatConfig.enableLog4jCustomLogFormat",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.log4jCustomLogFormat",
+          "value" : "%r [%t] %-5p %c %x - %m%n"
+        }, {
+          "name" : "dataFormatConfig.avroSchemaSource",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.avroSchema",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.schemaRegistryUrls",
+          "value" : [ ]
+        }, {
+          "name" : "dataFormatConfig.basicAuth",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.schemaLookupMode",
+          "value" : "SUBJECT"
+        }, {
+          "name" : "dataFormatConfig.subject",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.schemaId",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.avroSkipUnionIndex",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.protoDescriptorFile",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.messageType",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.isDelimited",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.binaryMaxObjectLen",
+          "value" : 1024
+        }, {
+          "name" : "dataFormatConfig.datagramMode",
+          "value" : "SYSLOG"
+        }, {
+          "name" : "dataFormatConfig.typesDbPath",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.convertTime",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.excludeInterval",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.authFilePath",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.netflowOutputValuesMode",
+          "value" : "RAW_AND_INTERPRETED"
+        }, {
+          "name" : "dataFormatConfig.maxTemplateCacheSize",
+          "value" : -1
+        }, {
+          "name" : "dataFormatConfig.templateCacheTimeoutMs",
+          "value" : -1
+        }, {
+          "name" : "dataFormatConfig.netflowOutputValuesModeDatagram",
+          "value" : "RAW_AND_INTERPRETED"
+        }, {
+          "name" : "dataFormatConfig.maxTemplateCacheSizeDatagram",
+          "value" : -1
+        }, {
+          "name" : "dataFormatConfig.templateCacheTimeoutMsDatagram",
+          "value" : -1
+        }, {
+          "name" : "dataFormatConfig.wholeFileMaxObjectLen",
+          "value" : 8192
+        }, {
+          "name" : "dataFormatConfig.rateLimit",
+          "value" : "-1"
+        }, {
+          "name" : "dataFormatConfig.verifyChecksum",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.excelHeader",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.excelSkipCellsWithNoHeader",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.excelReadAllSheets",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.excelSheetNames",
+          "value" : [ ]
+        } ]
+      } ]
+    },
+    "valid" : true,
+    "issues" : {
+      "pipelineIssues" : [ ],
+      "stageIssues" : { },
+      "issueCount" : 0
+    },
+    "previewable" : true
+  },
+  "pipelineRules" : {
+    "schemaVersion" : 3,
+    "version" : 2,
+    "metricsRuleDefinitions" : [ {
+      "id" : "badRecordsAlertID",
+      "alertText" : "High incidence of Error Records",
+      "metricId" : "pipeline.batchErrorRecords.counter",
+      "metricType" : "COUNTER",
+      "metricElement" : "COUNTER_COUNT",
+      "condition" : "${value() > 100}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "timestamp" : 1607967762607,
+      "valid" : true
+    }, {
+      "id" : "stageErrorAlertID",
+      "alertText" : "High incidence of Stage Errors",
+      "metricId" : "pipeline.batchErrorMessages.counter",
+      "metricType" : "COUNTER",
+      "metricElement" : "COUNTER_COUNT",
+      "condition" : "${value() > 100}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "timestamp" : 1607967762607,
+      "valid" : true
+    }, {
+      "id" : "idleGaugeID",
+      "alertText" : "Pipeline is Idle",
+      "metricId" : "RuntimeStatsGauge.gauge",
+      "metricType" : "GAUGE",
+      "metricElement" : "TIME_OF_LAST_RECEIVED_RECORD",
+      "condition" : "${time:now() - value() > 120000}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "timestamp" : 1607967762607,
+      "valid" : true
+    }, {
+      "id" : "batchTimeAlertID",
+      "alertText" : "Batch taking more time to process",
+      "metricId" : "RuntimeStatsGauge.gauge",
+      "metricType" : "GAUGE",
+      "metricElement" : "CURRENT_BATCH_AGE",
+      "condition" : "${value() > 200}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "timestamp" : 1607967762607,
+      "valid" : true
+    } ],
+    "dataRuleDefinitions" : [ ],
+    "driftRuleDefinitions" : [ ],
+    "uuid" : "0b51f8e7-8cb2-4d35-ad39-4098e4f59030",
+    "configuration" : [ {
+      "name" : "emailIDs",
+      "value" : [ ]
+    }, {
+      "name" : "webhookConfigs",
+      "value" : [ ]
+    } ],
+    "ruleIssues" : [ ],
+    "configIssues" : [ ]
+  },
+  "libraryDefinitions" : null
+}
